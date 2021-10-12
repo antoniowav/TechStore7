@@ -4,6 +4,11 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+
+header{
+    width:100%;
+    position: fixed;
+}
 .container{
     display: flex;
     justify-content: space-between;
