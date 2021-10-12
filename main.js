@@ -1,5 +1,6 @@
 var listOfProducts;
 const imgUrl = '/assets/';
+/* const oneplus = '/assets/' */
 /** Get products from the json file and store it in a gobal variable */
 function loadProducts() {
     fetch("./products.json")
@@ -34,9 +35,18 @@ function addProductsToWebpage() {
 
             let imgContainer = document.createElement('div');
             imgContainer.classList.add('imgContainer');
-            let productImg = document.createElement('img');
+            let productImg = document.createElement('img');   
             productImg.src = imgUrl + product.image;
             imgContainer.appendChild (productImg);
+
+            //ASK VICTOR ABOUT THIS
+
+         /*    let productImg2 = document.createElement('img');   
+            productImg2.src = oneplus + product.image;
+            imgContainer.appendChild (productImg2); */
+
+
+
 
         // create div-text descripton for each phone
         let textContainer = document.createElement('div');
@@ -44,6 +54,7 @@ function addProductsToWebpage() {
 
         let productHeader = document.createElement('H1')
         let productText = document.createElement('p');
+        
 
         productHeader.innerText = product.title;
         productText.innerText = product.description;
@@ -60,12 +71,13 @@ function addProductsToWebpage() {
 
         // create button div and tag
         let btnContainer = document.createElement('div');
-        btnContainer.classList.add ('btnContainer');
         let addToCartBtn = document.createElement('a');
+        let btnText = document.createTextNode ('Lägg till i kundvagn');
+        addToCartBtn.setAttribute ('href', 'http://www.google.com/');
+        btnContainer.classList.add ('btnContainer');
         btnContainer.appendChild(addToCartBtn);
-        addToCartBtn.innerText = ('Lägg till i kundvagn');
+        addToCartBtn.append (btnText);
         
-
         // Appending everything ---->
         mainContainer.appendChild(productContainer);
         productContainer.append(textContainer, imgContainer, priceContainer, btnContainer );

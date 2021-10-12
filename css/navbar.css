@@ -6,15 +6,24 @@
 }
 
 header{
-    width:100%;
     position: fixed;
+    width:100%;
+   
+    
+}
+
+#section {
+    height: 80px;
 }
 .container{
+    
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height:5em;
     background-color: rgb(36, 36, 36);
+
 }
 .logo {
     color:white;
