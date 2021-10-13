@@ -1,3 +1,4 @@
+
 var listOfProducts;
 const imgUrl = '/assets/';
 /* const oneplus = '/assets/' */
@@ -71,10 +72,16 @@ function addProductsToWebpage() {
 
         // create button div and tag
         let btnContainer = document.createElement('div');
+        let clickButton = document.createElement('div');
+        let cartIcon = document.createElement('i');
+        cartIcon.classList.add('fas', 'fa-shopping-cart');
+        
         let addToCartBtn = document.createElement('a');
         let btnText = document.createTextNode ('Lägg till i kundvagn');
         addToCartBtn.setAttribute ('href', 'http://www.google.com/');
         btnContainer.classList.add ('btnContainer');
+        addToCartBtn.appendChild(cartIcon)
+        addToCartBtn.appendChild(clickButton)
         btnContainer.appendChild(addToCartBtn);
         addToCartBtn.append (btnText);
         
