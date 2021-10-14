@@ -74,7 +74,7 @@ function addProductsToWebpage() {
         let btnContainer = document.createElement('div');
         let clickButton = document.createElement('div');
         let cartIcon = document.createElement('i');
-        cartIcon.classList.add('fas', 'fa-shopping-cart');
+        cartIcon.classList.add('fas', 'fa-cart-arrow-down');
         
         let addToCartBtn = document.createElement('a');
         let btnText = document.createTextNode ('Lägg till i kundvagn');
