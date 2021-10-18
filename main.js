@@ -87,7 +87,6 @@ function createUI() {
     let addToCartBtn = document.createElement('div');
     addToCartBtn.classList.add ('cartBtn')
     let btnText = document.createTextNode ('Lägg till i kundvagnen');
-    addToCartBtn.setAttribute ('href', '');
     btnContainer.classList.add ('btnContainer');
     addToCartBtn.appendChild(clickButton)
     addToCartBtn.appendChild(cartIcon)
