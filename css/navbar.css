@@ -15,7 +15,7 @@ header{
 #section {
     height: 80px;
 }
-.container{
+.headerContainer{
     
     display: flex;
     flex-direction: row;
@@ -28,7 +28,7 @@ header{
 .logo {
     color:white;
     font-weight: bold;
-    font-size: 2em;
+    font-size: 2.5em;
     margin-left : 3rem;
 }
 .cartIcon{
@@ -36,9 +36,46 @@ header{
     display: flex;
     color: white;
     margin-right: 3rem;
-    font-size: 2em;
+    font-size: 2.5em;
 }
 a {
     color: inherit;
     text-decoration: none;
 } 
+.counterContainer{
+    margin-right: 5px;
+}
+
+/* --------------Galaxy Fold -------------- */
+@media only screen and (max-width: 500px){
+    
+    .headerContainer{
+        height: 3rem;
+    }
+    .logo{
+        font-size: 1.5rem;
+        margin-left: 1.5rem;
+    }
+    .cartIcon{
+        font-size:1.5rem;
+        margin-right: 1.5rem;
+    }
+}
+/* ------------- landscape----------- */
+@media (max-height: 653px) and (orientation:landscape){
+    
+    .headerContainer{
+        height: 3rem;
+    }
+    .logo{
+        font-size: 1.5rem;
+        margin-left: 1.5rem;
+    }
+    .cartIcon{
+        font-size:1.5rem;
+        margin-right: 1.5rem;
+    }
+
+
+
+}
