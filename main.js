@@ -77,21 +77,29 @@ function createUI() {
     // create button div and tag
     let btnContainer = document.createElement('div');
     let clickButton = document.createElement('div');
+    clickButton.classList.add('clickBtn')
     let cartIcon = document.createElement('i');
     cartIcon.classList.add('fas', 'fa-cart-arrow-down');
+
+    let cartIconContainer = document.createElement('div')
+    cartIconContainer.classList.add('cartIconContainer')
     
-    let addToCartBtn = document.createElement('a');
-    let btnText = document.createTextNode ('Lägg till i kundvagn');
-    addToCartBtn.setAttribute ('href', 'http://www.google.com/');
+    let addToCartBtn = document.createElement('div');
+    addToCartBtn.classList.add ('cartBtn')
+    let btnText = document.createTextNode ('Lägg till i kundvagnen');
+    addToCartBtn.setAttribute ('href', '');
     btnContainer.classList.add ('btnContainer');
+    addToCartBtn.appendChild(clickButton)
     addToCartBtn.appendChild(cartIcon)
     addToCartBtn.appendChild(clickButton)
     btnContainer.appendChild(addToCartBtn);
-    addToCartBtn.append (btnText);
+    clickButton.append (btnText);
+    cartIconContainer.appendChild (cartIcon);
+    btnContainer.append (cartIconContainer);
     
     // Appending everything ---->
     mainContainer.appendChild(productContainer);
-    productContainer.append(textContainer, imgContainer, priceContainer, btnContainer );
+    productContainer.append(textContainer, imgContainer, priceContainer, btnContainer);
     textContainer.append (productHeader, productText);
 
 })
