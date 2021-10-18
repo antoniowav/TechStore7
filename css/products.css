@@ -29,8 +29,10 @@ a {
     justify-content: center;
     align-items: center;
     padding-bottom: 30px;
+    padding-top: 5em;
     width: 100%;
-    height: 91vh;
+    height: 100vh;
+
     
 }
 
@@ -72,7 +74,7 @@ img {
 }
 
 
-.btnContainer a {
+.btnContainer {
     
     border-radius: 5px;
     padding: 10px 20px;
@@ -81,13 +83,16 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    
-    
 }
 
-.btnContainer i {
+.cartIconContainer{
     margin-right: 5px;
 }
+
+
+
+
+
 
 
 
