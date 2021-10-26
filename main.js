@@ -12,6 +12,7 @@ function loadProducts() {
         listOfProducts = products;
         addProductsToWebpage();
     });
+    
 }
 
 
@@ -21,25 +22,69 @@ function initSite() {
 }
 
 /** Uses the loaded products data to create a visible product list on the website */
-function addProductsToWebpage() {
 
-    createUI();
+ function addProductsToWebpage() {
 
-    // Check your console to see that the products are stored in the listOfProducts varible.   
-    // Add your code here, remember to brake your code in to smaller function blocks
-    // to reduce complexity and increase readability. Each function should have
-    // an explainetory comment like the one for this function, see row 22.
+    let mainContainer = document.getElementById('mainContainer');
+
+    listOfProducts.forEach((product) => {
+        let productCard = createProductCard(product)
+        mainContainer.append(productCard)
+        
+    })
+
+    let basket = document.querySelectorAll('.btnContainer');
+
     
-    // TODO: Remove the console.log and these comments when you've read them.
+
+  /*   listOfProducts.push('inCart', 0); */
+
+    for (let i=0; i < basket.length; i++) {
+       basket[i].addEventListener('click', () => {
+        cartNumbers(listOfProducts[i]);
+       })
+
+       
+   }
+
+   // Add to cart function
+
+   function onLoadCartNumbers() {
+    let productNumber = localStorage.getItem('cartNumbers');
+
+    if(productNumber) {
+        document.querySelector('.itemsNumber, span').textContent = productNumber;
+    }
+   }
+
+   function cartNumbers(product) {
+       console.log("You selected", product)
+       let productNumber = localStorage.getItem('cartNumbers');
+       productNumber = parseInt(productNumber);
+
+       if(productNumber) {
+        
+            localStorage.setItem('cartNumbers', productNumber + 1);
+            document.querySelector('.itemsNumber, span').textContent = productNumber + 1;
+       } else {
+        localStorage.setItem('cartNumbers', 1);
+        document.querySelector('.itemsNumber, span').textContent = 1;
+
+       }
+
+       
+
+
+   }
+
+   onLoadCartNumbers();
+
+    
+    
 }
 
 
-function createUI() {
-
-    listOfProducts.forEach (function (product) {
-        
-    //declare the maincontainer for all the content on page
-    let mainContainer = document.getElementById('mainContainer');
+function createProductCard(product) {
 
     // create div-container for each phone
     let productContainer = document.createElement('div');
@@ -82,8 +127,14 @@ function createUI() {
     addToCartBtn.classList.add ('cartBtn')
     let btnText = document.createTextNode ('Lägg till i kundvagnen');
     btnContainer.classList.add ('btnContainer');
+    
     let cartIcon = document.createElement('i');
     cartIcon.classList.add('fas', 'fa-cart-arrow-down');
+
+
+    // adding event listener to button
+    
+    
     
     
     btnContainer.append (cartIconContainer);
@@ -92,9 +143,16 @@ function createUI() {
     cartIconContainer.appendChild (cartIcon);
     
     // Appending everything ---->
-    mainContainer.appendChild(productContainer);
     productContainer.append(textContainer, imgContainer, priceContainer, btnContainer);
     textContainer.append (productHeader, productText);
 
-})
+    return productContainer
 }
+
+
+
+
+
+
+
+
