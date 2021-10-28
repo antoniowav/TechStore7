@@ -1,7 +1,7 @@
 
 var listOfProducts;
 const imgUrl = '/assets/';
-/* const oneplus = '/assets/' */
+
 /** Get products from the json file and store it in a gobal variable */
 function loadProducts() {
     fetch("./products.json")
@@ -40,25 +40,26 @@ function initSite() {
   /*   listOfProducts.push('inCart', 0); */
 
     for (let i=0; i < basket.length; i++) {
-       basket[i].addEventListener('click', () => {
-        cartNumbers(listOfProducts[i]);
-       })
+        basket[i].addEventListener('click', () => {
+            cartNumbers(listOfProducts[i]);
+            totalCost(listOfProducts[i])
+        })
 
        
-   }
+    }
 
    // Add to cart function
 
-   function onLoadCartNumbers() {
-    let productNumber = localStorage.getItem('cartNumbers');
+    function onLoadCartNumbers() {
+        let productNumber = localStorage.getItem('cartNumbers');
 
-    if(productNumber) {
-        document.querySelector('.itemsNumber, span').textContent = productNumber;
+        if(productNumber) {
+            document.querySelector('.itemsNumber, span').textContent = productNumber;
+        }
     }
-   }
 
    function cartNumbers(product) {
-       console.log("You selected", product)
+       
        let productNumber = localStorage.getItem('cartNumbers');
        productNumber = parseInt(productNumber);
 
@@ -66,22 +67,69 @@ function initSite() {
         
             localStorage.setItem('cartNumbers', productNumber + 1);
             document.querySelector('.itemsNumber, span').textContent = productNumber + 1;
-       } else {
-        localStorage.setItem('cartNumbers', 1);
-        document.querySelector('.itemsNumber, span').textContent = 1;
+        } else {
+            localStorage.setItem('cartNumbers', 1);
+            document.querySelector('.itemsNumber, span').textContent = 1;
 
-       }
-
+        }
+        setItems(product);
        
-
-
-   }
-
-   onLoadCartNumbers();
-
+    }
     
     
+    onLoadCartNumbers();
 }
+// shows item quantity in localstorage
+function setItems(product) {
+    let cartItems = localStorage.getItem('productsQuantity');
+    cartItems = JSON.parse(cartItems);
+    if(cartItems != null) {
+        if(cartItems[product.model] == undefined) {
+           cartItems = {
+                ...cartItems,
+                [product.model]: product
+           } 
+        }
+        cartItems[product.model].quantity += 1;
+    } else {
+        product.quantity = 1;
+        cartItems = { 
+            [product.model]: product
+        }
+    }
+
+   localStorage.setItem('productsQuantity', JSON.stringify (cartItems));
+}
+// shows Total cost in Localstorage
+function totalCost(product){
+    let basketCost = localStorage.getItem('totalCost');
+    if(basketCost != null){
+        basketCost = parseInt(basketCost);
+        localStorage.setItem('totalCost', basketCost + product.price);
+    } else {
+        localStorage.setItem("totalCost", product.price);
+    }
+}
+  // add products from localstorage to Cart.html
+  function displayCart(){
+    let cartItems = localStorage.getItem('productsQuantity');
+    cartItems = JSON.parse(cartItems);
+    let productCard = document.querySelector('.productCard');
+    
+    if(cartItems && productCard){
+        productCard.innerHTML = '';
+        Object.values(cartItems).map(item => {
+            productCard.innerHTML += `
+            <div class="product">
+                 <i class="fas fa-times-circle"></i>
+                 <img src="./asstes/${item.image}.png">
+                 <span>${item.title}</span>
+            `
+        });
+    }
+}
+displayCart();
+
 
 
 function createProductCard(product) {
@@ -148,9 +196,6 @@ function createProductCard(product) {
 
     return productContainer
 }
-
-
-
 
 
 
