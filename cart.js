@@ -1,19 +1,6 @@
-var listOfProducts;
 const imgUrl = '/assets/';
-/** Get products from the json file and store it in a gobal variable */
-function loadProducts() {
-    fetch("./products.json")
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(products) {
-        listOfProducts = products;
-        addProductsToWebpage();
-    });
-}
-
 function initSite() {
-    loadProducts();
+    addProductsToWebpage();
     // This would also be a good place to initialize other parts of the UI
 }
 
@@ -31,10 +18,11 @@ function addProductsToWebpage() {
         basket[i].addEventListener('click', () => {
             cartNumbers(listOfProducts[i]);
             totalCost(listOfProducts[i])
-        })
-
-       
+        }) 
     }
+
+
+
 
    // Add to cart function
 
@@ -62,24 +50,66 @@ function addProductsToWebpage() {
         setItems(product);
        
     }
-    
+    // skapar elements till cart.html
     function createCartSection(){
-        let cartSection = document.createElement('div');
-        cartSection.classList.add('cartSection');
-        mainContainer.append(cartSection);
-        // let productCard = localStorage.getItem('productsQuantity');
-        // productCard = JSON.parse(productCard);
-        productCard = document.createElement('div');
-        productCard.classList.add('productCard');
-        cartSection.append(productCard);
-        for (var i = 0; i < localStorage.length; i++){
-            productCard.append(localStorage.getItem(localStorage.key(i)));
+        const totalCost = localStorage.getItem('totalCost')
+        const cartNumbers = localStorage.getItem('cartNumbers')
+        
+        
+        const quantityContainer = document.createElement('div')
+        quantityContainer.classList.add('quantity')
+        const cartSection = document.createElement('div');
+        cartSection.classList.add('cartContainer')
+        const quantityBox = document.createElement('div')
+        quantityBox.classList.add('quantityContaier')
+        quantityBox.append(quantityContainer)
+        const totalPriceBox = document.createElement('div')
+        totalPriceBox.classList.add('priceContainer')
+        const totalPriceContainer = document.createElement('div')
+        totalPriceContainer.classList.add('.price')
+        totalPriceBox.append(totalPriceContainer)
+        const img = document.createElement('div')
+        img.classList.add('imgContainer')
+       
+
+        
+        quantityBox.append(`Antal: ${cartNumbers}`)
+        totalPriceBox.append(`Totalt pris: ${totalCost}`)
+        mainContainer.append(cartSection, totalPriceBox, quantityBox);
+        
+        
+        let products = localStorage.getItem('productsInCart')
+       
+        products = JSON.parse(products)
+        for (var i = 0; i < products.length; i++){
+            const productCard = document.createElement('div');
+            const title = document.createElement('h3')
+            const imgDisp = document.createElement('img')
+            imgDisp.setAttribute("src", `${imgUrl}/${products[i].image}`)
+            imgDisp.setAttribute("alt", `${products[i].title}` )
+            const productPrice = document.createElement('span')
+            const productQuantity = document.createElement('span')
+
+
+            productPrice.classList.add('productPrice')
+            productQuantity.classList.add('productQuantity')
+            productCard.classList.add('productCard')
+            imgDisp.classList.add('imgContainer')
             
+
+            
+            productPrice.append(products[i].price + ' kr')
+            productQuantity.append('antal: '+ products[i].quantity)
+            title.append(products[i].title)
+            cartSection.appendChild(productCard);
+            productCard.append( imgDisp, title, productPrice , productQuantity )
         }
+
+        
+       
     }
-    
+
     createCartSection();
     onLoadCartNumbers();
     // createProductCard();
 }
-

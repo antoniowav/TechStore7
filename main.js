@@ -1,7 +1,6 @@
-
 var listOfProducts;
 const imgUrl = '/assets/';
-
+let cartArray = []
 /** Get products from the json file and store it in a gobal variable */
 function loadProducts() {
     fetch("./products.json")
@@ -22,8 +21,7 @@ function initSite() {
 }
 
 /** Uses the loaded products data to create a visible product list on the website */
-
- function addProductsToWebpage() {
+function addProductsToWebpage() {
 
     let mainContainer = document.getElementById('mainContainer');
 
@@ -72,34 +70,44 @@ function initSite() {
             document.querySelector('.itemsNumber, span').textContent = 1;
 
         }
-        setItems(product);
+        itemsInLocal(product);
        
     }
     
     
     onLoadCartNumbers();
 }
-// shows item quantity in localstorage
-function setItems(product) {
-    let cartItems = localStorage.getItem('productsQuantity');
-    cartItems = JSON.parse(cartItems);
-    if(cartItems != null) {
-        if(cartItems[product.model] == undefined) {
-           cartItems = {
-                ...cartItems,
-                [product.model]: product
-           } 
-        }
-        cartItems[product.model].quantity += 1;
+   
+// shows items in cart
+function itemsInLocal(product) {
+    let getCartArray = localStorage.getItem('productsInCart');
+    getCartArray = JSON.parse(getCartArray);
+
+    
+    if(!getCartArray) {
+        cartArray.push(product)
     } else {
-        product.quantity = 1;
-        cartItems = { 
-            [product.model]: product
-        }
+        cartArray = getCartArray
     }
 
-   localStorage.setItem('productsQuantity', JSON.stringify (cartItems));
+    if(cartArray.some(item => item.title === product.title)) {
+        cartArray.map(item => {
+            if(item.title === product.title) {
+                !item.quantity ? item.quantity = 1 : item.quantity += 1 
+            }
+        })
+    }   else {
+        cartArray.push(product)
+        cartArray.map(item => {
+            if(item.title === product.title) {
+                !item.quantity ? item.quantity = 1 : item.quantity += 1
+            }
+        })
+    }
+
+   localStorage.setItem('productsInCart', JSON.stringify (cartArray));
 }
+
 // shows Total cost in Localstorage
 function totalCost(product){
     let basketCost = localStorage.getItem('totalCost');
@@ -110,25 +118,7 @@ function totalCost(product){
         localStorage.setItem("totalCost", product.price);
     }
 }
-  // add products from localstorage to Cart.html
-  function displayCart(){
-    let cartItems = localStorage.getItem('productsQuantity');
-    cartItems = JSON.parse(cartItems);
-    let productCard = document.querySelector('.productCard');
-    
-    if(cartItems && productCard){
-        productCard.innerHTML = '';
-        Object.values(cartItems).map(item => {
-            productCard.innerHTML += `
-            <div class="product">
-                 <i class="fas fa-times-circle"></i>
-                 <img src="./asstes/${item.image}.png">
-                 <span>${item.title}</span>
-            `
-        });
-    }
-}
-displayCart();
+
 
 
 

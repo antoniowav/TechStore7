@@ -18,3 +18,23 @@ a {
     
     
 }
+.cartContainer{
+    display:flex;
+    flex-direction: row;
+    height:100vh;
+    width: 100vw;
+  
+}
+.productCard {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid rgb(0, 102, 255);
+    margin: 40px;
+}
+
+}
+.imgContainer{
+    display:flex;
+    height: 100%;
+    width: 100%;
+}
