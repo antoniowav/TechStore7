@@ -1,4 +1,4 @@
-const imgUrl = '/assets/';
+const imgUrl = '/assets';
 function initSite() {
     addProductsToWebpage();
     // This would also be a good place to initialize other parts of the UI
@@ -68,13 +68,12 @@ function addProductsToWebpage() {
         const totalPriceContainer = document.createElement('div')
         totalPriceContainer.classList.add('.price')
         totalPriceBox.append(totalPriceContainer)
-        const img = document.createElement('div')
-        img.classList.add('imgContainer')
+   
        
 
         
         quantityBox.append(`Antal: ${cartNumbers}`)
-        totalPriceBox.append(`Totalt pris: ${totalCost}`)
+        totalPriceBox.append(`Totalt pris: ${totalCost}` + 'kr')
         mainContainer.append(cartSection, totalPriceBox, quantityBox);
         
         
@@ -85,24 +84,26 @@ function addProductsToWebpage() {
             const productCard = document.createElement('div');
             const title = document.createElement('h3')
             const imgDisp = document.createElement('img')
+            imgDisp.classList.add("phoneImg")
             imgDisp.setAttribute("src", `${imgUrl}/${products[i].image}`)
             imgDisp.setAttribute("alt", `${products[i].title}` )
             const productPrice = document.createElement('span')
             const productQuantity = document.createElement('span')
+            const productInfo = document.createElement('div')
 
-
+            productInfo.classList.add('productInfo')
             productPrice.classList.add('productPrice')
             productQuantity.classList.add('productQuantity')
             productCard.classList.add('productCard')
-            imgDisp.classList.add('imgContainer')
-            
+            title.classList.add('productTitle')
 
-            
             productPrice.append(products[i].price + ' kr')
             productQuantity.append('antal: '+ products[i].quantity)
             title.append(products[i].title)
             cartSection.appendChild(productCard);
-            productCard.append( imgDisp, title, productPrice , productQuantity )
+            productCard.append( imgDisp)
+            productCard.appendChild(productInfo)
+            productInfo.append(title, productPrice, productQuantity)
         }
 
         
