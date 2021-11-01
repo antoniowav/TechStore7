@@ -54,20 +54,12 @@ function addProductsToWebpage() {
     function createCartSection(){
         const totalCost = localStorage.getItem('totalCost')
         const cartNumbers = localStorage.getItem('cartNumbers')
-        
-        
-        const quantityContainer = document.createElement('div')
-        quantityContainer.classList.add('quantity')
         const cartSection = document.createElement('div');
         cartSection.classList.add('cartContainer')
         const quantityBox = document.createElement('div')
         quantityBox.classList.add('quantityContainer')
-        quantityBox.append(quantityContainer)
         const totalPriceBox = document.createElement('div')
         totalPriceBox.classList.add('priceContainer')
-        const totalPriceContainer = document.createElement('div')
-        totalPriceContainer.classList.add('.price')
-        totalPriceBox.append(totalPriceContainer)
         const img = document.createElement('div')
         img.classList.add('imgContainer')
 
@@ -117,24 +109,10 @@ function addProductsToWebpage() {
             mainContainer.append(confirmBuyContainer);
         };
 
-
-        
-
-
-        
-
-
-
-
-        
-        
         
         
         let products = localStorage.getItem('productsInCart')
 
-  
-
-  
     
         // skapar cart-symbol
         let cartIcon = document.createElement('i');
@@ -219,5 +197,5 @@ function addProductsToWebpage() {
 
     createCartSection();
     onLoadCartNumbers();
-    // createProductCard();
+  
 }
