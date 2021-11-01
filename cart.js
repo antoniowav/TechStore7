@@ -84,7 +84,47 @@ function addProductsToWebpage() {
 
         checkOutBtnContainer.append(checkoutBtnIcon, checkOutBtnText);
         checkoutBtnFlex.append(checkOutBtnContainer);
-       
+
+
+
+              
+        checkOutBtnContainer.addEventListener('click', PurchaseMessage)
+
+
+        function PurchaseMessage(){
+           
+            let confirmBuyContainer = document.createElement('div');
+            confirmBuyContainer.classList.add('confirmBuyContainer');
+
+            let confirmBuyContent = document.createElement('div')
+            confirmBuyContent.classList.add('confirmBuyContent');
+
+            let checkIcon = document.createElement('i');
+            checkIcon.classList.add('fas', 'fa-check-circle');
+
+            let confirmBuyMessage = document.createElement('h1');
+            confirmBuyMessage.innerText = ('Tack för ditt köp!');
+
+            confirmBuyContent.append(checkIcon,confirmBuyMessage);
+
+
+            checkOutBtnContainer.removeEventListener('click', PurchaseMessage);
+            localStorage.clear();
+
+
+
+            confirmBuyContainer.append(confirmBuyContent);
+            mainContainer.append(confirmBuyContainer);
+        };
+
+
+        
+
+
+        
+
+
+
 
         
         
@@ -92,6 +132,10 @@ function addProductsToWebpage() {
         
         let products = localStorage.getItem('productsInCart')
 
+  
+
+  
+    
         // skapar cart-symbol
         let cartIcon = document.createElement('i');
         cartIcon.classList.add('fas', 'fa-shopping-cart');
@@ -100,6 +144,7 @@ function addProductsToWebpage() {
         let cartHeaderContainer = document.createElement('div');
         cartHeaderContainer.classList.add('cartHeaderContainer')
         let cartHeader = document.createElement('h1');
+        cartHeader.classList.add('cartTitle')
         cartHeader.innerText=('Kundvagn');
 
         cartHeaderContainer.append(cartIcon, cartHeader);
@@ -135,6 +180,16 @@ function addProductsToWebpage() {
             const productPrice = document.createElement('h6')
             const productQuantity = document.createElement('h5')
 
+            // Creates the "remove item button"
+            const deleteProductBtn = document.createElement('div');
+            deleteProductBtn.classList.add('deleteProductBtn');
+            const deleteProductBtnText = document.createElement('span');
+            deleteProductBtnText.innerText = ('Ta bort');
+            const deleteProductBtnIcon = document.createElement('i');
+            deleteProductBtnIcon.classList.add('far', 'fa-trash-alt');
+
+            deleteProductBtn.append(deleteProductBtnIcon, deleteProductBtnText)
+
 
             productPrice.classList.add('productPrice')
             productQuantity.classList.add('productQuantity')
@@ -148,7 +203,7 @@ function addProductsToWebpage() {
             title.append(products[i].title)
             cartSection.appendChild(productCard);
             imgContainer.append(imgDisp);
-            productCard.append( imgContainer, title, productPrice , productQuantity )
+            productCard.append( imgContainer, title, productPrice , productQuantity, deleteProductBtn)
 
         
         
