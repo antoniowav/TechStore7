@@ -17,8 +17,8 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    top: 80px;
+    height: 100vh;
+    padding-top: 5em;
     
 }
 
@@ -46,6 +46,7 @@ a {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    flex-wrap:wrap;
    /*  height:100vh;
     width: 100vw; THIS CODE IS NOT APPLICABLE (?) */
 
@@ -153,15 +154,11 @@ img {
     color: white;
     display: flex;
     justify-content: center;
-    z-index: 999;
     align-items: center;
     position: absolute;
-    width: 80%;
+    width: 100%;
     height: 100%;
-    margin-top: 30px;
-/*     margin-top: 5em;
- */    border-radius: 10px;
-    box-shadow: 1px 1px 1px 1px black;
+    border-radius: 10px;
 
 }
 
@@ -182,6 +179,61 @@ img {
 
 
 
-/* INSERT MEDIEQUERYS */
+/* INSERT MEDIEQUERIES */
 
+ /* ----------------PORTRAIT------------------- */
+@media only screen and (max-width: 500px){
+    #mainContainer{
+        padding-top: 3em;
+    }
+    .cartContainer{
+        flex-direction: row;
+    }
+    .imgContainer{
+        height: 80px;
+    }
+    .productCard h1{
+        font-size: 20px;
+    }
+    .deleteProductBtn{
+        font-size: 12px;
+    }
+    .cartHeaderContainer{
+        font-size:15px;
+        margin-top: 15px;
+    }
+    .checkOutBtnContainer{
+        margin-bottom: 20px;
+    }
+    .confirmBuyContainer{
+        height:110%;
+        width: 100%;
+        margin-top:3em;
+    }
+}    
+/* --------------landscape------------- */
+@media (max-height: 653px) and (orientation:landscape){
+    
+    #mainContainer{
+        padding-top: 3em;
+    }
+    .imgContainer{
+        height: 80px;
+    }
+    .productCard h1{
+        font-size: 20px;
+    }
+    .deleteProductBtn{
+        font-size: 12px;
+    }
+    .confirmBuyContainer{
+        height:130%;
+        width: 100%;
+        margin-top:3em;
  
+    }
+    
+}
+
+
+
