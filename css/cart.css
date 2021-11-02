@@ -182,9 +182,10 @@ img {
 /* INSERT MEDIEQUERIES */
 
  /* ----------------PORTRAIT------------------- */
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 540px){
     #mainContainer{
         padding-top: 3em;
+        height: 100%;
     }
     .cartContainer{
         flex-direction: row;
@@ -216,6 +217,7 @@ img {
     
     #mainContainer{
         padding-top: 3em;
+        height:100%;
     }
     .imgContainer{
         height: 80px;
@@ -227,7 +229,7 @@ img {
         font-size: 12px;
     }
     .confirmBuyContainer{
-        height:130%;
+        height:165%;
         width: 100%;
         margin-top:3em;
  
