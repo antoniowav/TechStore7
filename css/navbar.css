@@ -47,10 +47,11 @@ a {
 }
 
 /* --------------Galaxy Fold -------------- */
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 540px){
     
     .headerContainer{
         height: 3rem;
+        
     }
     .logo{
         font-size: 1.5rem;
