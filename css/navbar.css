@@ -46,7 +46,7 @@ a {
     margin-right: 5px;
 }
 
-/* --------------Galaxy Fold -------------- */
+/* --------------PORTRAIT-------------- */
 @media only screen and (max-width: 540px){
     
     .headerContainer{
@@ -62,8 +62,8 @@ a {
         margin-right: 1.5rem;
     }
 }
-/* ------------- landscape----------- */
-@media (max-height: 653px) and (orientation:landscape){
+/* -------------LANDSCAPE----------- */
+@media (max-height: 812px) and (orientation:landscape){
     
     .headerContainer{
         height: 3rem;

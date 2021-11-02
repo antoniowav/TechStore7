@@ -42,7 +42,7 @@ function addProductsToWebpage() {
     }
     setItems(product);
   }
-  // skapar elements till cart.html
+  // Creates elements to cart.html
   function createCartSection() {
     const totalCost = localStorage.getItem("totalCost");
     const cartNumbers = localStorage.getItem("cartNumbers");
@@ -55,7 +55,7 @@ function addProductsToWebpage() {
     const img = document.createElement("div");
     img.classList.add("imgContainer");
 
-    // Skapar "slutför köp" knappen
+    // Creates "slutför köp" button
 
     const checkoutBtnFlex = document.createElement("div");
     checkoutBtnFlex.classList.add("checkoutBtnFlex");
@@ -84,35 +84,31 @@ function addProductsToWebpage() {
       let confirmBuyMessage = document.createElement("h1");
       confirmBuyMessage.innerText = "Tack för ditt köp!";
 
-      let goBackHomeBtnContainer = document.createElement('div');
-      let goBackHomeBtnText = document.createElement('a');
-      goBackHomeBtnText = document.createTextNode('Forsätt Handla');
-      goBackHomeBtnText.href  = 'index.html';
-      
-      
-      goBackHomeBtnContainer.classList.add('goBackHomeBtnContainer');
-      goBackHomeBtnContainer.append(goBackHomeBtnText)
-      
+      let goBackHomeBtnContainer = document.createElement("div");
+      goBackHomeBtnContainer.innerText = "Fortsätt handla";
+      goBackHomeBtnContainer.classList.add("goBackHomeBtnContainer");
 
-      confirmBuyContent.append(checkIcon, confirmBuyMessage, goBackHomeBtnContainer);
+      let goBackHomeBtnLink = document.createElement("a");
+      goBackHomeBtnLink.href = "index.html";
+
+      goBackHomeBtnLink.append(goBackHomeBtnContainer);
+
+      confirmBuyContent.append(checkIcon, confirmBuyMessage, goBackHomeBtnLink);
 
       checkOutBtnContainer.removeEventListener("click", PurchaseMessage);
       localStorage.clear();
 
       confirmBuyContainer.append(confirmBuyContent);
       mainContainer.append(confirmBuyContainer);
-     
     }
-
-
 
     let products = localStorage.getItem("productsInCart");
 
-    // skapar cart-symbol
+    // Creates cart-symbol
     let cartIcon = document.createElement("i");
     cartIcon.classList.add("fas", "fa-shopping-cart");
 
-    // Skapar Kundvagn-rubrik texten
+    // Creates Kundvagn-rubrik texten
     let cartHeaderContainer = document.createElement("div");
     cartHeaderContainer.classList.add("cartHeaderContainer");
     let cartHeader = document.createElement("h1");
@@ -122,7 +118,7 @@ function addProductsToWebpage() {
     cartHeaderContainer.append(cartIcon, cartHeader);
     mainContainer.append(cartHeaderContainer);
 
-    // Detta if-statement körs bara om kundvagen är TOM!
+    // This IF statemen only runs if cart is Empty!
     if (products == null) {
       let basketEmpty = document.createElement("h3");
       basketEmpty.innerText = "Kundvagnen är tom!";
