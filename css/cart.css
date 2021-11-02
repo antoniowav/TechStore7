@@ -15,14 +15,14 @@ a {
 #mainContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
     align-items: center;
     height: 100vh;
     padding-top: 5em;
     
 }
 
-/* CART HEADER style (Kundvagn rubrik) */
+/* CART HEADER style */
 
 .cartHeaderContainer {
     display: flex;
@@ -47,8 +47,6 @@ a {
     align-items: center;
     margin-top: 20px;
     flex-wrap:wrap;
-   /*  height:100vh;
-    width: 100vw; THIS CODE IS NOT APPLICABLE (?) */
 
   
 }
@@ -102,8 +100,8 @@ img {
     display: flex;
     justify-content: center;
     align-content: center;
-    margin-top: 20px;
-    
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .checkOutBtnContainer {
@@ -157,8 +155,7 @@ img {
     align-items: center;
     position: absolute;
     width: 100%;
-    height: 100%;
-    border-radius: 10px;
+    height: 112%;
 
 }
 
@@ -177,31 +174,29 @@ img {
 
 }
 
-.goBackHomeBtn{
+.goBackHomeBtnContainer{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    background-color: rgb(26, 28, 31);
+    background-color: rgb(255, 255, 255);
     padding: 9px 15px 9px 15px;
     border-radius: 5px;
-    color: white;
+    color: black;
     cursor: pointer;
+    font-weight: bold;
     margin-top: 20px;
 }
 
 
 
-/* INSERT MEDIEQUERIES */
+/* MEDIEQUERIES */
 
- /* ----------------PORTRAIT------------------- */
-@media only screen and (max-width: 540px){
+/* ----------------PORTRAIT------------------- */
+@media only screen and (max-width: 720px){
     #mainContainer{
         padding-top: 3em;
-        height: 100%;
-    }
-    .cartContainer{
-        flex-direction: row;
+       
     }
     .imgContainer{
         height: 80px;
@@ -216,21 +211,18 @@ img {
         font-size:15px;
         margin-top: 15px;
     }
-    .checkOutBtnContainer{
-        margin-bottom: 20px;
+    .checkoutBtnFlex{
+        padding-bottom:10px;
     }
-    .confirmBuyContainer{
-        height:110%;
-        width: 100%;
-        margin-top:3em;
-    }
-}    
-/* --------------landscape------------- */
-@media (max-height: 653px) and (orientation:landscape){
+  
+}
+
+
+/* --------------LANDSCAPE------------- */
+@media (max-height: 812px) and (orientation:landscape){
     
     #mainContainer{
-        padding-top: 3em;
-        height:100%;
+        padding-top:3em;
     }
     .imgContainer{
         height: 80px;
@@ -241,14 +233,7 @@ img {
     .deleteProductBtn{
         font-size: 12px;
     }
-    .confirmBuyContainer{
-        height:165%;
-        width: 100%;
-        margin-top:3em;
- 
-    }
+    
     
 }
-
-
 
