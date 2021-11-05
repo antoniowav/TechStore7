@@ -1,82 +1,73 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
-header{
-    position: fixed;
-    width:100%;
-    z-index: 9;
-    
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 9;
 }
 
 #section {
-    height: 80px;
+  height: 80px;
 }
-.headerContainer{
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height:5em;
-    background-color: rgb(36, 36, 36);
-
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 5em;
+  background-color: rgb(36, 36, 36);
 }
 .logo {
-    color:white;
-    font-weight: bold;
-    font-size: 2.5em;
-    margin-left : 3rem;
+  color: white;
+  font-weight: bold;
+  font-size: 2.5em;
+  margin-left: 3rem;
 }
-.cartIcon{
-    flex-direction: row;
-    display: flex;
-    color: white;
-    margin-right: 3rem;
-    font-size: 2.5em;
+.cartIcon {
+  flex-direction: row;
+  display: flex;
+  color: white;
+  margin-right: 3rem;
+  font-size: 2.5em;
 }
 a {
-    color: inherit;
-    text-decoration: none;
-} 
-.counterContainer{
-    margin-right: 5px;
+  color: inherit;
+  text-decoration: none;
+}
+.counterContainer {
+  margin-right: 5px;
 }
 
 /* --------------PORTRAIT-------------- */
-@media only screen and (max-width: 540px){
-    
-    .headerContainer{
-        height: 3rem;
-        
-    }
-    .logo{
-        font-size: 1.5rem;
-        margin-left: 1.5rem;
-    }
-    .cartIcon{
-        font-size:1.5rem;
-        margin-right: 1.5rem;
-    }
+@media only screen and (max-width: 540px) {
+  .headerContainer {
+    height: 3rem;
+  }
+  .logo {
+    font-size: 1.5rem;
+    margin-left: 1.5rem;
+  }
+  .cartIcon {
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+  }
 }
 /* -------------LANDSCAPE----------- */
-@media (max-height: 812px) and (orientation:landscape){
-    
-    .headerContainer{
-        height: 3rem;
-    }
-    .logo{
-        font-size: 1.5rem;
-        margin-left: 1.5rem;
-    }
-    .cartIcon{
-        font-size:1.5rem;
-        margin-right: 1.5rem;
-    }
-
-
-
+@media (max-height: 812px) and (orientation: landscape) {
+  .headerContainer {
+    height: 3rem;
+  }
+  .logo {
+    font-size: 1.5rem;
+    margin-left: 1.5rem;
+  }
+  .cartIcon {
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+  }
 }

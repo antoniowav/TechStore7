@@ -48,6 +48,7 @@ function addProductsToWebpage() {
     }
   }
 
+  // LoclaStorage quantity logic
   function cartNumbers(product) {
     let productNumber = localStorage.getItem("cartNumbers");
     productNumber = parseInt(productNumber);
@@ -106,6 +107,7 @@ function totalCost(product) {
   }
 }
 
+// Creates elements in index.html
 function createProductCard(product) {
   // create div-container for each phone
   let productContainer = document.createElement("div");
