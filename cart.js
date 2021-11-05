@@ -1,7 +1,6 @@
 const imgUrl = "/assets/";
 function initSite() {
   addProductsToWebpage();
-  // This would also be a good place to initialize other parts of the UI
 }
 
 /** Uses the loaded products data to create a visible product list on the website */
@@ -71,6 +70,7 @@ function addProductsToWebpage() {
 
     checkOutBtnContainer.addEventListener("click", PurchaseMessage);
 
+    // Creates a popup after confirm purchase
     function PurchaseMessage() {
       let confirmBuyContainer = document.createElement("div");
       confirmBuyContainer.classList.add("confirmBuyContainer");
@@ -139,6 +139,8 @@ function addProductsToWebpage() {
       );
 
       products = JSON.parse(products);
+
+      // Rendering productcards to the cart.html
       for (var i = 0; i < products.length; i++) {
         const productCard = document.createElement("div");
         const title = document.createElement("h1");
@@ -149,7 +151,7 @@ function addProductsToWebpage() {
         const productPrice = document.createElement("h6");
         const productQuantity = document.createElement("h5");
 
-        // Creates the "remove item button"
+        // Creates the element for the "remove item button"
         const deleteProductBtn = document.createElement("div");
         deleteProductBtn.classList.add("deleteProductBtn");
         const deleteProductBtnText = document.createElement("span");
@@ -183,6 +185,7 @@ function addProductsToWebpage() {
   createCartSection();
   onLoadCartNumbers();
 
+  //  delete button logic
   let deleteButton = document.querySelectorAll(".deleteProductBtn");
 
   for (let i = 0; i < deleteButton.length; i++) {
@@ -194,7 +197,6 @@ function addProductsToWebpage() {
   }
 
   function removeItems(index, product) {
-    console.log(index, product);
     let data = localStorage.getItem("productsInCart");
     let cartQuantity = localStorage.getItem("cartNumbers");
     let totalPrice = localStorage.getItem("totalCost");
